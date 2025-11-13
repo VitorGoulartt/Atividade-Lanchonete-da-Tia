@@ -8,4 +8,5 @@ import attlanchonete.attmenulanchonete.model.AttLanchoneteModel;
 @Repository
 public interface AttLanchoneteRepository extends JpaRepository<AttLanchoneteModel, Integer> {
 
+    
 }
