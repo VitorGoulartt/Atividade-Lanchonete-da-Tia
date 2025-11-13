@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AttmenulanchoneteApplication<attmenulanchonete>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "attlanchonete.attmenulanchonete.AttmenulanchoneteApplication",
+            "projectName": "attmenulanchonete",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
