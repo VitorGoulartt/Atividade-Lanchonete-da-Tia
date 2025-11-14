@@ -36,18 +36,13 @@ public class AttLanchoneteService {
 
     public AttLanchoneteModel buscarIdLanche(int id){
         Optional<AttLanchoneteModel> lanche = attLanchoneteRepository.findById(id);
-        
-        if(lanche.isPresent()){
-            if(lanche.getDisponivel() == true){
-
-            }
-
             return lanche.orElse(null);
-        }
-        return null;
         
     }
 
-    public 
+    public List<AttLanchoneteModel> buscarCategoria(int categoria){
+        List<AttLanchoneteModel> categorias = attLanchoneteRepository.findBy(categoria);
+
+    }
 
 }

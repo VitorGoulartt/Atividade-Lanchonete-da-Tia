@@ -47,7 +47,7 @@ public class AttLanchoneteController {
     }
 
     @GetMapping("/{categoria}")
-    public ResponseEntity<List<AttLanchoneteModel>> buscarCategoria(@PathVariable String categoria){
+    public ResponseEntity<List<AttLanchoneteModel>> 0(@PathVariable int categoria){
 
         List<AttLanchoneteModel> categorias = attLanchoneteService.buscarCategoria(categoria);
 

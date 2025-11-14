@@ -27,7 +27,7 @@ public class AttLanchoneteModel {
     @Column(nullable = false)
     private double preco;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 4)
     private int categoria;
 
     @Column(nullable = false)
