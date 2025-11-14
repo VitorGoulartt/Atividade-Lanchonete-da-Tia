@@ -28,7 +28,7 @@ public class AttLanchoneteController {
 
     @GetMapping
     public ResponseEntity<List<AttLanchoneteModel>> listartodos(){
-        List<AttLanchoneteModel> lanches = new attLanchoneteService.listartodos();
+        List<AttLanchoneteModel> lanches = attLanchoneteService.listartodos();
 
         return ResponseEntity.ok(lanches);
 
@@ -36,7 +36,7 @@ public class AttLanchoneteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AttLanchoneteModel> buscarIdLanche(@PathVariable int id){
-        AttLanchoneteModel lanche = new attLanchoneteService.buscarIdLanche(id);
+        AttLanchoneteModel lanche = attLanchoneteService.buscarIdLanche(id);
         if(lanche != null){
             return ResponseEntity.ok(lanche);
 
@@ -49,7 +49,7 @@ public class AttLanchoneteController {
     @GetMapping("/{categoria}")
     public ResponseEntity<List<AttLanchoneteModel>> buscarCategoria(@PathVariable String categoria){
 
-        List<AttLanchoneteModel> categorias = new attLanchoneteService.buscarCategoria(categoria);
+        List<AttLanchoneteModel> categorias = attLanchoneteService.buscarCategoria(categoria);
 
         if(categorias != null){
             return ResponseEntity.ok(categorias);
@@ -60,7 +60,7 @@ public class AttLanchoneteController {
 
     @PostMapping
     public ResponseEntity<AttLanchoneteModel> adicionarLanche(@RequestBody AttLanchoneteModel lanche){
-        AttLanchoneteModel lanchenovo = new attlanchoneteService.adicionarLanche(lanche);
+        AttLanchoneteModel lanchenovo = attlanchoneteService.adicionarLanche(lanche);
         if(lanchenovo != null){
             return ResponseEntity.status(HttpStatus.CREATED).body(lanchenovo);
         }
@@ -70,7 +70,7 @@ public class AttLanchoneteController {
 
     @PutMapping("/{id}")
     public ResponseEntity<AttLanchoneteModel> atualizarLanches(@PathVariable int id){
-        AttLanchoneteModel lanche = new attLanchoneteService.atualizarLanches(id);
+        AttLanchoneteModel lanche = attLanchoneteService.atualizarLanches(id);
         if(lanche != null){
             attLanchoneteService.atualizarLanches(id);
             return ResponseEntity.noContent().build();

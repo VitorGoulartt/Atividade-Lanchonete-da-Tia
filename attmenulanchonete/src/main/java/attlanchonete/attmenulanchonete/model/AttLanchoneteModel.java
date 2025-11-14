@@ -49,4 +49,6 @@ public class AttLanchoneteModel {
         this.disponivel = disponivel;
         this.tempo = tempo;
     }
+
+    
 }
