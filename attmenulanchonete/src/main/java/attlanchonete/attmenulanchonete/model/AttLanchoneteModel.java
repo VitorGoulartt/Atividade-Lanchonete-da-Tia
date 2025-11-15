@@ -18,7 +18,7 @@ public class AttLanchoneteModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
 
-    @Column(nullable = false, length = 100)
+    @Column(unique = true, nullable = false, length = 100)
     private String nome;
 
     @Column(nullable = false)
@@ -33,14 +33,14 @@ public class AttLanchoneteModel {
     @Column(nullable = false)
     private Boolean disponivel;
 
-    @Column(nullable = false)
-    private double tempo;
+    @Column(nullable = false, length = 100)
+    private String tempo;
 
     public AttLanchoneteModel(){
 
     }
 
-    public AttLanchoneteModel(int id, String nome, String descricao, double preco, int categoria, boolean disponivel, double tempo){
+    public AttLanchoneteModel(int id, String nome, String descricao, double preco, int categoria, boolean disponivel, String tempo){
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;

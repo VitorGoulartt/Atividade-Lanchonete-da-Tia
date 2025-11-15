@@ -46,8 +46,8 @@ public class AttLanchoneteController {
         
     }
 
-    @GetMapping("/{categoria}")
-    public ResponseEntity<List<AttLanchoneteModel>> 0(@PathVariable int categoria){
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<List<AttLanchoneteModel>> buscarCategoria(@PathVariable int categoria){
 
         List<AttLanchoneteModel> categorias = attLanchoneteService.buscarCategoria(categoria);
 
@@ -60,7 +60,7 @@ public class AttLanchoneteController {
 
     @PostMapping
     public ResponseEntity<AttLanchoneteModel> adicionarLanche(@RequestBody AttLanchoneteModel lanche){
-        AttLanchoneteModel lanchenovo = attlanchoneteService.adicionarLanche(lanche);
+        AttLanchoneteModel lanchenovo = attLanchoneteService.adicionarLanche(lanche);
         if(lanchenovo != null){
             return ResponseEntity.status(HttpStatus.CREATED).body(lanchenovo);
         }
@@ -69,18 +69,17 @@ public class AttLanchoneteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AttLanchoneteModel> atualizarLanches(@PathVariable int id){
-        AttLanchoneteModel lanche = attLanchoneteService.atualizarLanches(id);
+    public ResponseEntity<AttLanchoneteModel> atualizarLanches(@PathVariable int id, @RequestBody AttLanchoneteModel lanche){
+        AttLanchoneteModel lanches = attLanchoneteService.atualizarLanches(id, lanche);
         if(lanche != null){
-            attLanchoneteService.atualizarLanches(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok(lanches);
         }
         return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<AttLanchoneteModel> apagarLanche(@PathVariable int id){
-        AttLanchoneteModel lanche = new attLanchoneteService.apagarLanche(id);
+        AttLanchoneteModel lanche = attLanchoneteService.buscarIdLanche(id);
         if(lanche != null){
             attLanchoneteService.apagarLanche(id);
             return ResponseEntity.noContent().build();
