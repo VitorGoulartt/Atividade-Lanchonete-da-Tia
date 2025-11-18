@@ -1,5 +1,6 @@
 package attlanchonete.attmenulanchonete.controller;
 
+import java.net.ResponseCache;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +65,10 @@ public class AttClienteController {
     @PutMapping("/{id}")
     public ResponseEntity<AttClienteModel> atualizarCliente(@PathVariable int id, @RequestBody AttClienteModel cliente){
         AttClienteController clientes = attClienteService.atualizarCliente(id, cliente);
-        if()
+        if(clientes != null){
+            return ResponseEntity.ok(clientes);
+        }
+        return ResponseEntity.notFound().build();
 
     }
 
