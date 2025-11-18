@@ -14,8 +14,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AttLanchoneteModel {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(unique = true, nullable = false, length = 100)

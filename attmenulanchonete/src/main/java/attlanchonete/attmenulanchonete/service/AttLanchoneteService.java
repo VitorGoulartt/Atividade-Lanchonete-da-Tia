@@ -69,7 +69,12 @@ public class AttLanchoneteService {
         if(lanche.getPreco() > 0 ){
             return attLanchoneteRepository.save(lanche);
 
+        }else if(lanche.getPreco() <= 0){
+            lanche.setDisponivel(false);
+             return attLanchoneteRepository.save(lanche);
+
         }
+           
         return null;
         
     }
