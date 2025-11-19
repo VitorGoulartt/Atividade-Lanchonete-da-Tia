@@ -35,12 +35,24 @@ public class AttClienteService {
     public AttClienteModel adicionarCliente(AttClienteModel cliente){
 
         cliente.setAtivo(true);
-        cliente.setDataCadastro(Calendar.DAY_OF_YEAR);
+        cliente.setDataCadastro(Calendar.getInstance().getTime());
         cliente.setPedidos(null);
-        if(cliente.getPreferencias() != null ){
+        return cliente;
+
+    }
+
+    public AttClienteModel atualizarCliente(int id, AttClienteModel cliente){
+        Optional<AttClienteModel> clienteNovo = attClienteRepository.findById(id);
+        if(clienteNovo.isPresent()){
+            AttClienteModel clientes = clienteNovo.get();
+            clientes.setNomeCompleto(cliente.getNomeCompleto());
+            clientes.setEndereço(cliente.getEndereço());
+            clientes.setTelefone(cliente.getTelefone());
+            cliente.setPreferencias(cliente.getPreferencias());
+            return attClienteRepository.save(cliente);
 
         }
-
+        return null;
     }
 
 }

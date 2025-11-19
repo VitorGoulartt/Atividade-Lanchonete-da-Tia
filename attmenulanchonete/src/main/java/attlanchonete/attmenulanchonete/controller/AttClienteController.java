@@ -1,11 +1,10 @@
 package attlanchonete.attmenulanchonete.controller;
 
-import java.net.ResponseCache;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import attlanchonete.attmenulanchonete.model.AttClienteModel;
 import attlanchonete.attmenulanchonete.service.AttClienteService;
-import io.micrometer.core.ipc.http.HttpSender.Response;
+
 
 @RestController
 @RequestMapping("/api/cliente")
@@ -64,7 +63,7 @@ public class AttClienteController {
 
     @PutMapping("/{id}")
     public ResponseEntity<AttClienteModel> atualizarCliente(@PathVariable int id, @RequestBody AttClienteModel cliente){
-        AttClienteController clientes = attClienteService.atualizarCliente(id, cliente);
+        AttClienteModel clientes = attClienteService.atualizarCliente(id, cliente);
         if(clientes != null){
             return ResponseEntity.ok(clientes);
         }

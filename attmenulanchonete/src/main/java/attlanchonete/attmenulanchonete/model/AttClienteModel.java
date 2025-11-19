@@ -1,6 +1,8 @@
 package attlanchonete.attmenulanchonete.model;
 
-import javax.print.DocFlavor.STRING;
+import java.util.Date;
+
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,7 +36,7 @@ public class AttClienteModel {
     private String endereço;// (Tipado em uma classe) obrigatório
 
     @Column(nullable = false, length = 150)
-    private int dataCadastro;//Gerado automaticamente
+    private Date dataCadastro;//Gerado automaticamente
 
     @Column(nullable = false, length = 150)
     private boolean ativo; //Booleano, padrão:true
@@ -55,7 +57,7 @@ public class AttClienteModel {
 
     }
 
-    public AttClienteModel(String nomeCompleto, String email, int telefone, String endereço, int dataCadastro, boolean ativo, String preferencias, String historicoCompras, float cpf, String pedidos){
+    public AttClienteModel(String nomeCompleto, String email, int telefone, String endereço, Date dataCadastro, boolean ativo, String preferencias, String historicoCompras, float cpf, String pedidos){
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.telefone = telefone;
@@ -67,4 +69,6 @@ public class AttClienteModel {
         this.historicoCompras = historicoCompras;
         this.pedidos = pedidos;
     }
+
+   
 }
