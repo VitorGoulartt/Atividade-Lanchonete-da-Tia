@@ -18,8 +18,9 @@ import attlanchonete.attmenulanchonete.model.AttClienteModel;
 import attlanchonete.attmenulanchonete.service.AttClienteService;
 
 
-@RestController
+
 @RequestMapping("/api/cliente")
+@RestController
 public class AttClienteController {
 
     @Autowired
@@ -41,7 +42,7 @@ public class AttClienteController {
         return ResponseEntity.ok(cliente);
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity<AttClienteModel> buscarClienteEmail(@PathVariable String email){
         AttClienteModel cliente = attClienteService.buscarClienteEmail(email);
 
@@ -54,10 +55,12 @@ public class AttClienteController {
     @PostMapping
     public ResponseEntity<AttClienteModel> adicionarCliente(@RequestBody AttClienteModel cliente  ){
         AttClienteModel clienteNovo = attClienteService.adicionarCliente(cliente);
-        if(clienteNovo != null){
-            return ResponseEntity.status(HttpStatus.CREATED).body(clienteNovo);
+        if(clienteNovo == null){
+            return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
+
         }
-        return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteNovo);
 
     }
 

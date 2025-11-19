@@ -37,7 +37,7 @@ public class AttClienteService {
         cliente.setAtivo(true);
         cliente.setDataCadastro(Calendar.getInstance().getTime());
         cliente.setPedidos(null);
-        return cliente;
+        return attClienteRepository.save(cliente);
 
     }
 
@@ -46,9 +46,9 @@ public class AttClienteService {
         if(clienteNovo.isPresent()){
             AttClienteModel clientes = clienteNovo.get();
             clientes.setNomeCompleto(cliente.getNomeCompleto());
-            clientes.setEndereço(cliente.getEndereço());
+            clientes.setEndereco(cliente.getEndereco());
             clientes.setTelefone(cliente.getTelefone());
-            cliente.setPreferencias(cliente.getPreferencias());
+            clientes.setPreferencias(cliente.getPreferencias());
             return attClienteRepository.save(cliente);
 
         }
