@@ -17,7 +17,7 @@ public class AttClienteService {
     private AttClienteRepository attClienteRepository;
 
     public List<AttClienteModel> listartodos(){
-        List<AttClienteModel> clienteAtivo = attClienteRepository.findAllByAtivo(true);
+        List<AttClienteModel> clienteAtivo = attClienteRepository.findAllByAtivo(false);
         return clienteAtivo;
 
     }
@@ -35,7 +35,7 @@ public class AttClienteService {
     public AttClienteModel adicionarCliente(AttClienteModel cliente){
 
         cliente.setAtivo(true);
-        cliente.setDataCadastro(Calendar.getInstance().getTime());
+
         cliente.setPedidos(null);
         return attClienteRepository.save(cliente);
 
