@@ -2,15 +2,14 @@ package attlanchonete.attmenulanchonete.model;
 
 import java.time.LocalDateTime;
 
-
-
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -25,7 +24,7 @@ public class AttClienteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;//Numérico, gerado pelo sistema
+    private Long id;//Numérico, gerado pelo sistema
 
     @Column(nullable = false)
     private String nomeCompleto; //Obrigatório
@@ -37,7 +36,7 @@ public class AttClienteModel {
     @Column
     private String telefone; //Formato válido,opcional (ADICIONE,MAS NÃO PRECISA VALIDAR )
 
-    @Embedded
+    @OneToOne(cascade = CascadeType.ALL)
     private AttEnderecoModel endereco;// (Tipado em uma classe) obrigatório
 
     @Column(name = "data_cadastro", nullable = false, updatable = false)
