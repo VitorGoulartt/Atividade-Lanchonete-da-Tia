@@ -29,5 +29,8 @@ public class AttEnderecoModel {
     @Column(nullable = false)
     private String cidade;
 
+    @Column(nullable = false)
+    private String numero;
+
 
 }

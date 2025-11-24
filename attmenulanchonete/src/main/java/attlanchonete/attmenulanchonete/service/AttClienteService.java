@@ -17,7 +17,7 @@ public class AttClienteService {
     private AttClienteRepository attClienteRepository;
 
     public List<AttClienteModel> listartodos(){
-        List<AttClienteModel> clienteAtivo = attClienteRepository.findAllByAtivo(false);
+        List<AttClienteModel> clienteAtivo = attClienteRepository.findAllByAtivo(true);
         return clienteAtivo;
 
     }

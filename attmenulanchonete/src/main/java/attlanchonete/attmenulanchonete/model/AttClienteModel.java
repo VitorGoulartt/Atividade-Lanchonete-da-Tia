@@ -1,7 +1,7 @@
 package attlanchonete.attmenulanchonete.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 
 
@@ -15,8 +15,6 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
 
 
 @Entity 
@@ -29,21 +27,20 @@ public class AttClienteModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;//Numérico, gerado pelo sistema
 
-    @Column(nullable = false, length = 100 )
+    @Column(nullable = false)
     private String nomeCompleto; //Obrigatório
 
-    @Email(message = "Formato de e-mail inválido")
-    @Column(nullable = false, unique = true, length = 120)
+    @Column(nullable = false, unique = true)
     private String email; //Único no sistema,obrigatório, deve ser válido (ADICIONE,MAS NÃO PRECISAVALIDAR )
 
-    @Pattern(regexp  = "\\(?\\d{2}\\)?\\s?(\\d{5}|\\d{4})-?\\d{4}", message = "Formato de telefone inválido. Use (XX) 9XXXX-XXXX ou similar.")
-    @Column(nullable = false)
+   
+    @Column
     private String telefone; //Formato válido,opcional (ADICIONE,MAS NÃO PRECISA VALIDAR )
 
     @Embedded
     private AttEnderecoModel endereco;// (Tipado em uma classe) obrigatório
 
-    @Column(name = "data_cadastrp")
+    @Column(name = "data_cadastro", nullable = false, updatable = false)
     private LocalDateTime dataCadastro;//Gerado automaticamente
 
     @Column(nullable = false)
@@ -52,13 +49,13 @@ public class AttClienteModel {
     @Column(columnDefinition = "TEXT")
     private String preferencias;//Texto opcional
 
-    @Column(nullable = true, length = 150)
+    @Column(columnDefinition = "TEXT")
     private String historicoCompras;//Inicialmente vazio(ADD COMO STRING NÃO OBRIGATÓRIA)
 
     @Column(nullable = false, unique = true)
     private String cpf;//Obrigatório, único,válido (ADICIONE,MAS NÃO PRECISA VALIDAR )
 
-    @Column(nullable = true, length = 150)
+    @Column(columnDefinition = "TEXT")
     private String pedidos;//Campo inicialmente vazio (ADD COMO STRING NÃO OBRIGATÓRIA)
 
     @PrePersist
