@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
@@ -37,6 +38,7 @@ public class AttClienteModel {
     private String telefone; //Formato válido,opcional (ADICIONE,MAS NÃO PRECISA VALIDAR )
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco", nullable = false)
     private AttEnderecoModel endereco;// (Tipado em uma classe) obrigatório
 
     @Column(name = "data_cadastro", nullable = false, updatable = false)
