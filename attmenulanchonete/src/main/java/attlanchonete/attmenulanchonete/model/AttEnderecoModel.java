@@ -20,9 +20,7 @@ import lombok.Setter;
 @Table(name = "endereco")
 public class AttEnderecoModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+   
 
     @Column(nullable = false)
     private String rua;

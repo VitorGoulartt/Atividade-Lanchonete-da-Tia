@@ -16,13 +16,13 @@ import lombok.Setter;
 @Table(name = "Produto")
 public class AttProdutoModel {
 
-    @Column()
+    @Column(nullable = false)
     private String nome;
 
-    @Column()
+    @Column(nullable = false)
     private double preco;
 
-    @Column()
+    @Column(nullable = false) 
     private String categoria;
 
 }
