@@ -1,15 +1,16 @@
 package attlanchonete.attmenulanchonete.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
@@ -56,8 +57,8 @@ public class AttClienteModel {
     @Column(nullable = false, unique = true)
     private String cpf;//Obrigatório, único,válido (ADICIONE,MAS NÃO PRECISA VALIDAR )
 
-    @Column(columnDefinition = "TEXT")
-    private String pedidos;//Campo inicialmente vazio (ADD COMO STRING NÃO OBRIGATÓRIA)
+    @OneToMany(mappedBy = "cliente")
+    private List<AttPedidoModel> pedidos;//Campo inicialmente vazio (ADD COMO STRING NÃO OBRIGATÓRIA)
 
     @PrePersist
     protected void onCreate() {
@@ -69,7 +70,7 @@ public class AttClienteModel {
 
     }
 
-    public AttClienteModel(String nomeCompleto, String email, String telefone, AttEnderecoModel endereco, LocalDateTime dataCadastro, boolean ativo, String preferencias, String historicoCompras, String cpf, String pedidos){
+    public AttClienteModel(String nomeCompleto, String email, String telefone, AttEnderecoModel endereco, LocalDateTime dataCadastro, boolean ativo, String preferencias, String historicoCompras, String cpf, List<AttPedidoModel> pedidos){
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.telefone = telefone;
