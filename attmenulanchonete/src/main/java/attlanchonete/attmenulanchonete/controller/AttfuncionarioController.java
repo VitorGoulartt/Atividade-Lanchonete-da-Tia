@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import attlanchonete.attmenulanchonete.model.AttProdutoModel;
 import attlanchonete.attmenulanchonete.model.AttfuncionarioModel;
 import attlanchonete.attmenulanchonete.service.AttFuncionarioService;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("api/funcionario")
 public class AttfuncionarioController {
@@ -48,9 +50,9 @@ public class AttfuncionarioController {
 
     @PostMapping("/Pedido")
     public ResponseEntity<AttPedidoModel> adicionarPedido(@RequestBody AttPedidoModel Pedido , AttClienteModel cliente ){
-        AttPedidoModel PedidoNovo = attFuncionarioService.FazerPedido(Pedido , cliente);
+        AttPedidoModel PedidoNovo = attFuncionarioService.fazerPedido(Pedido , cliente);
         if(Pedido != null){
-            return ResponseEntity.status(HttpStatus.CREATED).body(Pedido);
+            return ResponseEntity.status(HttpStatus.CREATED).body(PedidoNovo);
         }
          return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
 
@@ -69,10 +71,10 @@ public class AttfuncionarioController {
     }
 
     @GetMapping("/pedido/{id}")
-    public ResponseEntity<AttPedidoModel> buscarPedidoId(@PathVariable Long id){
+    public ResponseEntity<AttPedidoModel> buscarPedidoId(@PathVariable int id){
         AttPedidoModel pedido = attFuncionarioService.buscarPedidoId(id);
         if(pedido != null){
-            return ResponseEntity.ok(pedido);;
+            return ResponseEntity.ok(pedido);
         }
         return ResponseEntity.notFound().build();
 
