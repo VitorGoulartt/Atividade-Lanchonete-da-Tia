@@ -3,6 +3,8 @@ package attlanchonete.attmenulanchonete.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -57,6 +59,7 @@ public class AttClienteModel {
     @Column(nullable = true, unique = true)
     private String cpf;//Obrigatório, único,válido (ADICIONE,MAS NÃO PRECISA VALIDAR )
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<AttPedidoModel> pedidos;//Campo inicialmente vazio (ADD COMO STRING NÃO OBRIGATÓRIA)
 

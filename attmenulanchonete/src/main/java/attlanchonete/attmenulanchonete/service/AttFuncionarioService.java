@@ -9,6 +9,7 @@ import attlanchonete.attmenulanchonete.model.AttClienteModel;
 import attlanchonete.attmenulanchonete.model.AttPedidoModel;
 import attlanchonete.attmenulanchonete.model.AttProdutoModel;
 import attlanchonete.attmenulanchonete.model.AttfuncionarioModel;
+import attlanchonete.attmenulanchonete.repository.AttClienteRepository;
 import attlanchonete.attmenulanchonete.repository.AttFuncionarioRepository;
 import attlanchonete.attmenulanchonete.repository.AttPedidoRepository;
 import attlanchonete.attmenulanchonete.repository.AttProdutoRepository;
@@ -27,6 +28,9 @@ public class AttFuncionarioService {
 
     @Autowired
     private AttProdutoRepository  attProdutoRepository;
+
+    @Autowired
+    private AttClienteRepository attClienteRepository;
 
 
    @Transactional
@@ -60,7 +64,13 @@ public class AttFuncionarioService {
        
     }
 
-    public AttPedidoModel fazerPedido(AttPedidoModel Pedido, AttClienteModel cliente, AttfuncionarioModel funcionario){
+    public AttPedidoModel fazerPedido(AttPedidoModel Pedido, int clienteId, int funcionarioId){
+        AttClienteModel cliente = attClienteRepository.findById(clienteId)
+         .orElseThrow(() -> new RuntimeException("Cliente não encontrado com ID: " + clienteId));
+
+        AttfuncionarioModel funcionario = attFuncionarioRepository.findById(funcionarioId)
+         .orElseThrow(() -> new RuntimeException("Funcionário não encontrado com ID: " + funcionarioId));
+
        Pedido.setCliente(cliente);
         Pedido.setFuncionario(funcionario); 
 

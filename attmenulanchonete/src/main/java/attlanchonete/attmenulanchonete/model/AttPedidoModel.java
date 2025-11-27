@@ -33,7 +33,7 @@ public class AttPedidoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
     private AttClienteModel cliente;
     
