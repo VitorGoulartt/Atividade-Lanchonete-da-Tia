@@ -3,7 +3,9 @@ package attlanchonete.attmenulanchonete.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,25 +19,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Pedido")
+@Table(name = "pedido")
 public class AttPedidoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cliente", nullable = false)
     private AttClienteModel cliente;
     
-    @OneToMany(mappedBy = "Produto")
-    private List<AttProdutoModel> Produto;
+    @OneToMany(mappedBy = "pedido")
+    private List<AttProdutoModel> produtos;
     
     @Column()
     private LocalDateTime data_do_pedido;
@@ -43,8 +46,15 @@ public class AttPedidoModel {
     @Column()
     private int total;
 
-    @ManyToOne
-    @JoinColumn(name = "id_funcionario", nullable = false)
+    @ManyToOne 
+    @JoinColumn(name = "id_funcionario", nullable = false) 
     private AttfuncionarioModel funcionario;
 
+    @PrePersist
+    protected void onCreate() {
+      data_do_pedido = LocalDateTime.now();
+        
+    }
+
+   
 }

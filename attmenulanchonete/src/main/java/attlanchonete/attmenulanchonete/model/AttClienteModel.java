@@ -54,7 +54,7 @@ public class AttClienteModel {
     @Column(columnDefinition = "TEXT")
     private String historicoCompras;//Inicialmente vazio(ADD COMO STRING NÃO OBRIGATÓRIA)
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private String cpf;//Obrigatório, único,válido (ADICIONE,MAS NÃO PRECISA VALIDAR )
 
     @OneToMany(mappedBy = "cliente")

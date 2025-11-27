@@ -49,8 +49,8 @@ public class AttfuncionarioController {
     }
 
     @PostMapping("/Pedido")
-    public ResponseEntity<AttPedidoModel> adicionarPedido(@RequestBody AttPedidoModel Pedido , AttClienteModel cliente ){
-        AttPedidoModel PedidoNovo = attFuncionarioService.fazerPedido(Pedido , cliente);
+    public ResponseEntity<AttPedidoModel> adicionarPedido(@RequestBody AttPedidoModel Pedido , AttClienteModel cliente, AttfuncionarioModel funcionario ){
+        AttPedidoModel PedidoNovo = attFuncionarioService.fazerPedido(Pedido , cliente, funcionario);
         if(Pedido != null){
             return ResponseEntity.status(HttpStatus.CREATED).body(PedidoNovo);
         }
