@@ -34,7 +34,7 @@ public class AttPedidoModel {
     @JoinColumn(name = "id_cliente", nullable = false)
     private AttClienteModel cliente;
     
-    @OneToMany(mappedBy = "Pedido")
+    @OneToMany(mappedBy = "Produto")
     private List<AttProdutoModel> Produto;
     
     @Column()
