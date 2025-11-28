@@ -26,7 +26,7 @@ async function buscarendereco() {
 
             const resultado = await resposta.json();
 
-            pd_resultado.textContent= JSON.stringify(resultado,null,2)
+            pd_resultado.textContent= Text.stringify(resultado,null,2)
             //pd_resultado.textContent= "Cadastradp com sucesso";
 
         } catch (err) {

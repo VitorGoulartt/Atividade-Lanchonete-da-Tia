@@ -1,35 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Primeiro programa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
 </head>
 <body>
-  <header>
-    <a href="./index.html">Home</a>
-    <a href="./produtos.html">Produtos</a>
-    <a href="./clientes.html">Clientes</a>
-  </header>
+    <header>
+         <a href="cliente.html"><h2>Lista de produto</h2></a>
+          <a href="atividade.html"><h2>Menu</h2></a>
 
-  <form id="pd_form" action="">
-      <input id="pd_nome" name="nome" type="text" placeholder="Nome...">
-      <br>
-      <input id="pd_categoria" name="categoria" type="text" placeholder="Categoria...">
-      <br>
-      <input id="pd_descricao" name="descricao" type="text" placeholder="Descrição...">
-      <br>
-        <input id="pd_tempoPreparo" name="tempoPreparo" type="text" placeholder="Tempo de Preparo...">
-      <br>
-      <input id="pd_disponivel" name="disponivel" type="checkbox" placeholder="Disponivel...">
-      <br>
-      <input id="pd_preco" name="preco" type="text" placeholder="Preço...">
+      
 
-      <button type="submit" onclick="">ENVIAR</button>
-  </form>
+    </header>
+     <H4 style="border: 0cap;">MENU LANCHONETE/POST </H4>
 
-  <div id="pd_resultado"></div>
+    <table style="background-color: rgb(200, 255, 0);" width="20%">
+      <tr>
+      <td>Adicionar Produto ao Menu da Lanchonete</td>
+     
+       </tr>
+    </table><br>
+    <form id="pd_form" action="">
+        
+     <input id="nome" type="text" placeholder="nome do produto"><br>
+      
+     <select id="categoria">    
+      <option >Selecione uma categoria</option>
+      <option value="1">lanches</option>
+        <option value="2">bebidas</option>
+        <option value="3">acompanhamentos</option>
+        <option value="4">sobremesas</option>
 
-  <script  src="./script.js"></script>
+     </select><br>
+    
+     <input id="descricao" type="text" placeholder="descricao"><br>
+     <h5>disponivel:</h5>
+     <input id="disponivel" type="checkbox" placeholder="disponivel"><br>
+      
+     <input id="preco" type="number" placeholder="Preço" step="0.01"><br>
+      
+
+     <button type="submit" style="background-color: red;"  onclick="">Enviar</button>
+
+    
+    </form>
+    <div id="pd_resultado"></div>
+    
+   
+<script src="scriptDOis.js"></script>
 </body>
 </html>
