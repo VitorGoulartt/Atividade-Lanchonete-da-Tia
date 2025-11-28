@@ -51,7 +51,7 @@ public class AttLanchoneteService {
     }
     
     public AttLanchoneteModel adicionarLanche(AttLanchoneteModel lanche){
-        lanche.setDisponivel(true);
+       
         switch(lanche.getCategoria()){
             case 1: 
             lanche.setTempo("(10-15 min)");
