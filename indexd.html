@@ -1,38 +1,35 @@
-async function buscarendereco() {
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primeiro programa</title>
+</head>
+<body>
+  <header>
+    <a href="./index.html">Home</a>
+    <a href="./produtos.html">Produtos</a>
+    <a href="./clientes.html">Clientes</a>
+  </header>
 
-    const Link_API = 'https://humble-space-enigma-xgvgpg9grw7f9954-8080.app.github.dev/';
+  <form id="pd_form" action="">
+      <input id="pd_nome" name="nome" type="text" placeholder="Nome...">
+      <br>
+      <input id="pd_categoria" name="categoria" type="text" placeholder="Categoria...">
+      <br>
+      <input id="pd_descricao" name="descricao" type="text" placeholder="Descrição...">
+      <br>
+        <input id="pd_tempoPreparo" name="tempoPreparo" type="text" placeholder="Tempo de Preparo...">
+      <br>
+      <input id="pd_disponivel" name="disponivel" type="checkbox" placeholder="Disponivel...">
+      <br>
+      <input id="pd_preco" name="preco" type="text" placeholder="Preço...">
 
-    const pd_form = document.getElementById('pd_form');
-    const pd_resultado = document.getElementById('pd_resultado');
+      <button type="submit" onclick="">ENVIAR</button>
+  </form>
 
-    pd_form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+  <div id="pd_resultado"></div>
 
-        const dados = {
-            nome: pd_form.nome.value,
-            categoria: pd_form.categoria.value,
-            descricao: pd_form.descricao.value,
-            disponivel: pd_form.disponivel.checked,
-            preco: parseFloat(pd_form.preco.value) ,
-        };
-
-        try {
-            const resposta = await fetch(`${Link_API}api/lanchonete`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(dados)
-            });
-
-
-            const resultado = await resposta.json();
-
-            pd_resultado.textContent= JSON.stringify(resultado,null,2)
-            //pd_resultado.textContent= "Cadastradp com sucesso";
-
-        } catch (err) {
-            console.log('Erro:', err);
-            pd_resultado.textContent = "Erro ao enviar dados para API"
-        }
-    });
-}
-buscarendereco();
+  <script  src="./script.js"></script>
+</body>
+</html>

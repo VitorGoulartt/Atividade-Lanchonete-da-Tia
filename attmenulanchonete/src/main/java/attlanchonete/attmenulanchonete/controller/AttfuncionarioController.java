@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import attlanchonete.attmenulanchonete.model.AttClienteModel;
+
 import attlanchonete.attmenulanchonete.model.AttPedidoModel;
 import attlanchonete.attmenulanchonete.model.AttProdutoModel;
 import attlanchonete.attmenulanchonete.model.AttfuncionarioModel;
